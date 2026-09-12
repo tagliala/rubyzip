@@ -71,6 +71,7 @@ bundle exec rubocop -a
 
 Guidelines:
 
+- Always ask before auto-correcting Rubocop failures.
 - Don't add new blanket exclusions to `.rubocop_todo.yml` for new code — that file exists to grandfather in pre-existing style debt, not to excuse new violations. Fix the code, or, if a rule genuinely shouldn't apply, add a narrowly-scoped exception directly in `.rubocop.yml` with a comment explaining why (follow the existing style of comments there). `Layout/LineLength` is capped at 100 for `lib/`, but is uncapped for `test/**/*.rb`.
 - CI runs `bundle exec rubocop` as a separate required job (`.github/workflows/lint.yml`), so lint failures block merges just like test failures.
 
@@ -86,7 +87,6 @@ bundle exec rake rdoc
 
 - All Ruby files start with `# frozen_string_literal: true`.
 - Keep the public API changes backwards-compatible where possible; this is a widely-used library. Breaking API changes are called out prominently in `README.md` and `Changelog.md` (see the "Updating to version 3.0" section of the README for an example of the level of detail expected).
-- Update `Changelog.md` for any user-visible change (new feature, bug fix, behaviour change). Follow the existing format (grouped by version, one bullet per change).
 - This projects adheres to the principles of Semantic Versioning (see the summary section at https://semver.org)
 - Don't bump the version in `lib/zip/version.rb` yourself unless specifically asked to — releases are cut deliberately. Do raise a note if you think that a change requires more than just a patch-level version number bump.
 - Security issues should never be discussed in public issues/PRs; the README asks that they be emailed directly to the maintainer instead. If you notice something that looks like a security vulnerability while working in this repo, flag it to the user rather than opening a public PR describing it.
